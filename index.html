@@ -23,7 +23,7 @@
 
 <div id="time" style='position: fixed; ; top: 5%; right:0%; width:200px;height:70px;text-align: center; ;font-size: 25px;color: black'></div>
 
-<div id="score" style='position: fixed; ; top: 20%;right:10%; width:200px;height:100px;text-align:right;font-size: 40px;color: black;'></div>
+<div id="score" style='position: fixed; ; top: 20%;right:10%; width:200px;height:70px;text-align:right;font-size: 25px;color: black;'></div>
 
 
 
@@ -99,7 +99,7 @@ var random2=Math.floor(Math.random()*3)
 
 function endChk()
 {
- if(Math.floor(PassSec/100) == 30)
+ if(Math.floor(PassSec/100) == 29 && ( '00' + (100 - PassSec%100)).slice( -2 ) == "00")
   {
    stopShowing();
    document.getElementById("score").style.color="red";
