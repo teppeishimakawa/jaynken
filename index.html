@@ -99,7 +99,7 @@ var random2=Math.floor(Math.random()*3)
 
 function endChk()
 {
- if((Math.floor(PassSec/100) == 29) && ( ((100 - PassSec%100) == 0) || ((100 - PassSec%100) == 1) )
+ if(  (Math.floor(PassSec/100) == 29) && ( ((100 - PassSec%100) == 0) || ((100 - PassSec%100) == 1) )  )
   {
    stopShowing();
    document.getElementById("score").style.color="red";
