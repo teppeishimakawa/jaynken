@@ -23,7 +23,7 @@
 
 <div id="time" style='position: fixed; ; top: 5%; right:0%; width:200px;height:70px;text-align: center; ;font-size: 25px;color: black'></div>
 
-<div id="score" style='position: fixed; ; top: 20%;right:10%; width:200px;height:70px;text-align:right;font-size: 50px;color: black;'></div>
+<div id="score" style='position: fixed; ; top: 20%;right:10%; width:200px;height:100px;text-align:right;font-size: 40px;color: black;'></div>
 
 
 
@@ -79,7 +79,7 @@ var random2=Math.floor(Math.random()*3)
 　　　　　function showPassage()
 　　　　　{
    　　　 PassSec++;   // カウントアップ
-   　　　 msg = Math.floor(PassSec/100) + ":" +  ( '00' + PassSec%100).slice( -2 );   // 表示文作成
+   　　　 msg = 29 - (Math.floor(PassSec/100)) + ":" +  ( '00' + (100 - PassSec%100)).slice( -2 );   // 表示文作成
    　　   document.getElementById("time").innerHTML = msg;   // 表示更新
 　　　　　}
 　　　　　　// 繰り返し処理の開始
