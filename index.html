@@ -1,0 +1,217 @@
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<link href="./style.css" rel="stylesheet" type="text/css"/>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<title>jyanken</title>
+<style>
+</style>
+</head>
+
+
+
+
+<body>
+<!--user-select:none重要！ボタン文字が選択状態になってしまう。-->
+<div class="order_all">
+<div id=janken_order_container class="order"><img class="order" id="jyanken_order"></div>
+<div id="order_comment"></div>
+</div>
+
+<div id="time" style='position: fixed; ; top: 5%; right:0%; width:200px;height:50px;text-align: center; ;font-size: 50px;color: black'></div>
+
+<div id="score" style='position: fixed; ; top: 20%;right:10%; width:200px;height:50px;text-align:right;font-size: 50px;color: black;'></div>
+
+<br>
+
+<div class="jyanken_all">
+  <img class="jyanken" id="gu" src="./img/gu.png"/>
+  <img class="jyanken" id="cho" src="./img/cho.png"/>
+  <img class="jyanken" id="pa" src="./img/pa.png"/>
+</div>
+
+<br>
+<div class="btn_all">
+  <!--div style='position: fixed; top: 85%; width:100%;text-align: center; z-index: 100;'-->
+    <button id="stt">
+        start
+    </button>
+    <button id="reload">
+       reload
+    </button>
+</div>
+
+
+<script>
+
+function isMobile()
+{
+  const isAndroid = /Android/i.test(navigator.userAgent);
+  const isiOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  return isAndroid || isiOS;
+}
+
+const mobile = isMobile();
+
+
+var flg=0;
+var PassSec;   // 秒数カウント用変数
+var PassageID;
+var msg;
+var anime;
+var cnt=0;
+
+var icon_arr=["./img/gu.png","./img/cho.png","./img/pa.png"]
+var comment_arr=["&nbsp;&nbsp;勝って！","&nbsp;&nbsp;負けて！","&nbsp;&nbsp;引き分けて！"]
+
+var gu=document.getElementById("gu");
+var cho=document.getElementById("cho");
+var pa=document.getElementById("pa");
+
+var random1=Math.floor(Math.random()*3)
+var random2=Math.floor(Math.random()*3)
+　　　　　
+
+　　　　　// 繰り返し処理の中身
+　　　　　function showPassage()
+　　　　　{
+   　　　 PassSec++;   // カウントアップ
+   　　　 msg = Math.floor(PassSec/100) + ":" +  ( '00' + PassSec%100).slice( -2 );   // 表示文作成
+   　　   document.getElementById("time").innerHTML = msg;   // 表示更新
+　　　　　}
+　　　　　　// 繰り返し処理の開始
+　　　　　function startShowing()
+　　　　　{
+   　　　　PassSec = 0;   // カウンタのリセット
+   　　　　PassageID = setInterval(showPassage,10);
+　　　　　}
+
+        // 繰り返し処理の中止
+        function stopShowing()
+        {
+        clearInterval( PassageID );   // タイマークリア
+        }
+
+
+
+function endChk()
+{
+ if(Math.floor(PassSec/100) == 30)
+  {
+   stopShowing();
+   document.getElementById("score").style.color="red";
+   gu.style.pointerEvents="none"
+   cho.style.pointerEvents="none"
+   pa.style.pointerEvents="none"
+  }
+}
+
+
+
+
+
+function render()
+{
+ anime=requestAnimationFrame(render);
+ endChk();
+}
+
+
+
+render();
+
+
+
+
+document.getElementById("stt").addEventListener("click", () =>
+{
+  if(flg == 0)
+    {
+      startShowing();
+      document.getElementById("stt").disabled=true;
+      flg=1;
+
+      document.getElementById("jyanken_order").src=icon_arr[random1];
+      document.getElementById("order_comment").innerHTML=comment_arr[random2];
+      gu.style.pointerEvents="auto"
+      cho.style.pointerEvents="auto"
+      pa.style.pointerEvents="auto"
+
+    }else
+    {
+
+    }
+});
+
+
+
+document.getElementById("reload").onclick=function(){location.reload()}
+
+
+//random1 0:gu,1:cho,2:pa
+//random2 0:勝ち,1:負け,2:引き分け
+
+//gu
+gu.onclick=function()
+{//勝って cho, 負けて pa, 引き分けて gu
+  if((random2 == 0 && random1 == 1) || (random2 == 1 && random1 == 2) || (random2 == 2 && random1 == 0))
+  {
+   next();
+  }else{NGnext();}
+}
+
+//cho
+cho.onclick=function()
+{//勝って pa, 負けて gu, 引き分けて cho
+  if((random2 == 0 && random1 == 2) || (random2 == 1 && random1 == 0) || (random2 == 2 && random1 == 1))
+  {
+   next();
+  }else{NGnext();}
+}
+
+//pa
+pa.onclick=function()
+{//勝って gu, 負けて gu, 引き分けて pa
+  if((random2 == 0 && random1 == 0) || (random2 == 1 && random1 == 1) || (random2 == 2 && random1 == 2))
+  {
+   next();
+  }else{NGnext();}
+}
+
+
+
+function next()
+{
+   cnt++
+   document.getElementById("score").innerHTML=cnt;
+   random1=Math.floor(Math.random()*3)
+   random2=Math.floor(Math.random()*3)
+   document.getElementById("jyanken_order").src=icon_arr[random1]
+   document.getElementById("order_comment").innerHTML=comment_arr[random2]
+}
+
+
+function NGnext()
+{
+   cnt--
+   document.getElementById("score").innerHTML=cnt;
+   random1=Math.floor(Math.random()*3)
+   random2=Math.floor(Math.random()*3)
+   document.getElementById("jyanken_order").src=icon_arr[random1]
+   document.getElementById("order_comment").innerHTML=comment_arr[random2]
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+</body></html>
