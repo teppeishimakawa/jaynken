@@ -15,7 +15,7 @@
 
 
 <body oncontextmenu='return false;' oncopy='return false;'>
-<!--user-select:none重要！ボタン文字が選択状態になってしまう。-->
+<!--user-select:none,oncontextmenu='return false;' oncopy='return false;'重要！ボタン文字が選択状態になってしまう。-->
 <div class="order_all">
 <div id=janken_order_container class="order"><img class="order" id="jyanken_order"></div>
 <div id="order_comment"></div>
@@ -73,6 +73,8 @@ var pa=document.getElementById("pa");
 
 var random1=Math.floor(Math.random()*3)
 var random2=Math.floor(Math.random()*3)
+
+color();
 　　　　　
 
 　　　　　// 繰り返し処理の中身
@@ -183,16 +185,8 @@ pa.onclick=function()
 }
 
 
-
-function next()
+function color()
 {
-   cnt++
-   document.getElementById("score").innerHTML=cnt;
-   random1=Math.floor(Math.random()*3)
-   random2=Math.floor(Math.random()*3)
-   document.getElementById("jyanken_order").src=icon_arr[random1]
-   document.getElementById("order_comment").innerHTML=comment_arr[random2]
-
   if((random2 == 0 && random1 == 1) || (random2 == 1 && random1 == 2) || (random2 == 2 && random1 == 0))
   {
    gu.className = 'jyanken green';cho.className = 'jyanken red';pa.className = 'jyanken red';
@@ -210,6 +204,20 @@ function next()
 }
 
 
+function next()
+{
+   cnt++
+   document.getElementById("score").innerHTML=cnt;
+   random1=Math.floor(Math.random()*3)
+   random2=Math.floor(Math.random()*3)
+   document.getElementById("jyanken_order").src=icon_arr[random1]
+   document.getElementById("order_comment").innerHTML=comment_arr[random2]
+
+   color();
+
+}
+
+
 function NGnext()
 {
    cnt--
@@ -219,21 +227,7 @@ function NGnext()
    document.getElementById("jyanken_order").src=icon_arr[random1]
    document.getElementById("order_comment").innerHTML=comment_arr[random2]
 
-  if((random2 == 0 && random1 == 1) || (random2 == 1 && random1 == 2) || (random2 == 2 && random1 == 0))
-  {
-   gu.className = 'jyanken green';cho.className = 'jyanken red';pa.className = 'jyanken red';
-  }
-
-  if((random2 == 0 && random1 == 2) || (random2 == 1 && random1 == 0) || (random2 == 2 && random1 == 1))
-  {
-   cho.className = 'jyanken green';gu.className = 'jyanken red';pa.className = 'jyanken red';
-  }
-
-   if((random2 == 0 && random1 == 0) || (random2 == 1 && random1 == 1) || (random2 == 2 && random1 == 2))
-  {
-   pa.className = 'jyanken green';gu.className = 'jyanken red';cho.className = 'jyanken red';
-  }
-
+  color();
 }
 </script>
 

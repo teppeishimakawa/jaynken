@@ -7,7 +7,7 @@ body, div, p,img
     -moz-user-select: none; /* Firefox */
     -webkit-user-select: none; /* Safari、Chromeなど */
     -ms-user-select: none; /* IE10かららしい */
-    -webkit-touch-callout:none; /* リンク長押しのポップアップを無効化
+    -webkit-touch-callout:none; /* リンク長押しのポップアップを無効化 */
     }
 
 
