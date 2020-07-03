@@ -102,29 +102,26 @@ height:100px;
 
 .red
 {
--moz-transition: filter 0s;/* Firefox */
--webkit-transition: filter 0s;/* Safari、Chromeなど */
--ms-transition: filter 0s;/* IE10かららしい */
 transition: filter 0s;
 }
 
 .green
 {
--moz-transition: filter 0s;/* Firefox */
--webkit-transition: filter 0s;/* Safari、Chromeなど */
--ms-transition: filter 0s;/* IE10かららしい */
 transition: filter 0s;
 }
 
 
 .red:active  {
+	filter: invert(15%) sepia(95%) saturate(6932%) hue-rotate(358deg) brightness(95%) contrast(112%);
     -webkit-filter: invert(15%) sepia(95%) saturate(6932%) hue-rotate(358deg) brightness(95%) contrast(112%);
 }
 
 .green:active  {
+	filter: invert(17%) sepia(91%) saturate(7085%) hue-rotate(128deg) brightness(100%) contrast(106%);
     -webkit-filter: invert(17%) sepia(91%) saturate(7085%) hue-rotate(128deg) brightness(100%) contrast(106%);
 }
 
 .blue:active  {
+	filter: invert(8%) sepia(99%) saturate(7044%) hue-rotate(247deg) brightness(100%) contrast(145%);
    -webkit-filter: invert(8%) sepia(99%) saturate(7044%) hue-rotate(247deg) brightness(100%) contrast(145%);
 }
