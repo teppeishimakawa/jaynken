@@ -14,7 +14,7 @@
 
 
 
-<body>
+<body oncontextmenu='return false;' oncopy='return false;'>
 <!--user-select:none重要！ボタン文字が選択状態になってしまう。-->
 <div class="order_all">
 <div id=janken_order_container class="order"><img class="order" id="jyanken_order"></div>
@@ -104,9 +104,9 @@ function endChk()
    stopShowing();
    document.getElementById("time").innerHTML="0:00";
    document.getElementById("score").style.color="red";
-   //gu.style.pointerEvents="none"
-   //cho.style.pointerEvents="none"
-   //pa.style.pointerEvents="none"
+   gu.style.pointerEvents="none"
+   cho.style.pointerEvents="none"
+   pa.style.pointerEvents="none"
   }
 }
 
@@ -137,9 +137,9 @@ document.getElementById("stt").addEventListener("click", () =>
 
       document.getElementById("jyanken_order").src=icon_arr[random1];
       document.getElementById("order_comment").innerHTML=comment_arr[random2];
-     // gu.style.pointerEvents="auto"
-     // cho.style.pointerEvents="auto"
-     // pa.style.pointerEvents="auto"
+      gu.style.pointerEvents="auto"
+      cho.style.pointerEvents="auto"
+      pa.style.pointerEvents="auto"
 
     }else
     {

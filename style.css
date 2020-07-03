@@ -7,6 +7,7 @@ body, div, p,img
     -moz-user-select: none; /* Firefox */
     -webkit-user-select: none; /* Safari、Chromeなど */
     -ms-user-select: none; /* IE10かららしい */
+    -webkit-touch-callout:none; /* リンク長押しのポップアップを無効化
     }
 
 
@@ -59,6 +60,7 @@ width:100px;
 margin: 25px 0px;
 margin-left: auto;
 margin-right: auto;
+pointer-events: none;
 z-index: 100;
 }
 
