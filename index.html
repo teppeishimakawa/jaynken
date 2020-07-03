@@ -17,7 +17,7 @@
 <body oncontextmenu='return false;' oncopy='return false;'>
 <!--user-select:none,oncontextmenu='return false;' oncopy='return false;'重要！ボタン文字が選択状態になってしまう。-->
 <div class="order_all">
-<img id="order_icon">
+<div id=janken_order_container class="order"><img class="order" id="order_icon"></div>
 <div id="order_comment"></div>
 </div>
 
@@ -168,7 +168,6 @@ pa.onclick=function()
 }
 
 
-
 function color()
 {
   if((random2 == 0 && random1 == 1) || (random2 == 1 && random1 == 2) || (random2 == 2 && random1 == 0))
@@ -200,7 +199,6 @@ function next()
    color();
 
 }
-
 
 
 function NGnext()
