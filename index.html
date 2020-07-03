@@ -17,7 +17,7 @@
 <body oncontextmenu='return false;' oncopy='return false;'>
 <!--user-select:none,oncontextmenu='return false;' oncopy='return false;'重要！ボタン文字が選択状態になってしまう。-->
 <div class="order_all">
-<div id=janken_order_container class="order"><img class="order" id="order_icon"></div>
+<div id=janken_order_container class="order"><img class="order" id="order_icon" style="visibility: hidden;"></div>
 <div id="order_comment"></div>
 </div>
 
@@ -71,6 +71,8 @@ var random1=Math.floor(Math.random()*3)
 var random2=Math.floor(Math.random()*3)
 
 color();
+
+document.getElementById("order_icon").src=icon_arr[random1];
 　　　　　
 
 　　　　　function showPassage()
@@ -120,7 +122,7 @@ document.getElementById("stt").addEventListener("click", () =>
       document.getElementById("stt").disabled=true;
       flg=1;
 
-      document.getElementById("order_icon").src=icon_arr[random1];
+      document.getElementById("order_icon").style.visibility=visible;
       document.getElementById("order_comment").innerHTML=comment_arr[random2];
       gu.style.pointerEvents="auto"
       cho.style.pointerEvents="auto"
