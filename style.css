@@ -88,9 +88,9 @@ text-align: center;
 #order_comment
 {
 display:block;
-width:200px;
+width:150px;
 margin:10px 0px;
-text-align: center;
+text-align:left;
 }
 
 .order_all
