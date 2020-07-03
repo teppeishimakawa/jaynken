@@ -1,6 +1,6 @@
 ﻿
 
-body, div, p
+body, div, p,img
    {
     font: 400 20px/22px Roboto,sans-serif;
     user-select: none; /* CSS3 */
@@ -102,12 +102,18 @@ height:100px;
 
 .red
 {
+-moz-transition: filter 0s;/* Firefox */
+-webkit-transition: filter 0s;/* Safari、Chromeなど */
+-ms-transition: filter 0s;/* IE10かららしい */
 transition: filter 0s;
 }
 
 .green
 {
-transition: filter 0s ;
+-moz-transition: filter 0s;/* Firefox */
+-webkit-transition: filter 0s;/* Safari、Chromeなど */
+-ms-transition: filter 0s;/* IE10かららしい */
+transition: filter 0s;
 }
 
 
