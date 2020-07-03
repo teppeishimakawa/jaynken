@@ -28,9 +28,9 @@
 
 
 <div class="jyanken_all">
-  <img class="jyanken" id="gu" src="./img/gu.png"/>
-  <img class="jyanken" id="cho" src="./img/cho.png"/>
-  <img class="jyanken" id="pa" src="./img/pa.png"/>
+  <img class="jyanken red" id="gu" src="./img/gu.png"/>
+  <img class="jyanken red" id="cho" src="./img/cho.png"/>
+  <img class="jyanken red" id="pa" src="./img/pa.png"/>
 </div>
 
 
@@ -99,9 +99,10 @@ var random2=Math.floor(Math.random()*3)
 
 function endChk()
 {
- if( (29 - (Math.floor(PassSec/100)) <= 0) && ((100 - PassSec%100) <= 0) )
+ if( (PassSec/100) >= 30)
   {
    stopShowing();
+   document.getElementById("time").innerHTML="0:00";
    document.getElementById("score").style.color="red";
    gu.style.pointerEvents="none"
    cho.style.pointerEvents="none"
@@ -191,6 +192,21 @@ function next()
    random2=Math.floor(Math.random()*3)
    document.getElementById("jyanken_order").src=icon_arr[random1]
    document.getElementById("order_comment").innerHTML=comment_arr[random2]
+
+  if((random2 == 0 && random1 == 1) || (random2 == 1 && random1 == 2) || (random2 == 2 && random1 == 0))
+  {
+   gu.className = 'jyanken green';cho.className = 'jyanken red';pa.className = 'jyanken red';
+  }
+
+  if((random2 == 0 && random1 == 2) || (random2 == 1 && random1 == 0) || (random2 == 2 && random1 == 1))
+  {
+   cho.className = 'jyanken green';gu.className = 'jyanken red';pa.className = 'jyanken red';
+  }
+
+   if((random2 == 0 && random1 == 0) || (random2 == 1 && random1 == 1) || (random2 == 2 && random1 == 2))
+  {
+   pa.className = 'jyanken green';gu.className = 'jyanken red';cho.className = 'jyanken red';
+  }
 }
 
 
@@ -202,6 +218,22 @@ function NGnext()
    random2=Math.floor(Math.random()*3)
    document.getElementById("jyanken_order").src=icon_arr[random1]
    document.getElementById("order_comment").innerHTML=comment_arr[random2]
+
+  if((random2 == 0 && random1 == 1) || (random2 == 1 && random1 == 2) || (random2 == 2 && random1 == 0))
+  {
+   gu.className = 'jyanken green';cho.className = 'jyanken red';pa.className = 'jyanken red';
+  }
+
+  if((random2 == 0 && random1 == 2) || (random2 == 1 && random1 == 0) || (random2 == 2 && random1 == 1))
+  {
+   cho.className = 'jyanken green';gu.className = 'jyanken red';pa.className = 'jyanken red';
+  }
+
+   if((random2 == 0 && random1 == 0) || (random2 == 1 && random1 == 1) || (random2 == 2 && random1 == 2))
+  {
+   pa.className = 'jyanken green';gu.className = 'jyanken red';cho.className = 'jyanken red';
+  }
+
 }
 </script>
 
