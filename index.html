@@ -17,7 +17,7 @@
 <body oncontextmenu='return false;' oncopy='return false;'>
 <!--user-select:none,oncontextmenu='return false;' oncopy='return false;'重要！ボタン文字が選択状態になってしまう。-->
 <div class="order_all">
-<div id=janken_order_container class="order"><img class="order" id="jyanken_order"></div>
+<img id="order_icon">
 <div id="order_comment"></div>
 </div>
 
@@ -120,7 +120,7 @@ document.getElementById("stt").addEventListener("click", () =>
       document.getElementById("stt").disabled=true;
       flg=1;
 
-      document.getElementById("jyanken_order").src=icon_arr[random1];
+      document.getElementById("order_icon").src=icon_arr[random1];
       document.getElementById("order_comment").innerHTML=comment_arr[random2];
       gu.style.pointerEvents="auto"
       cho.style.pointerEvents="auto"
@@ -168,6 +168,7 @@ pa.onclick=function()
 }
 
 
+
 function color()
 {
   if((random2 == 0 && random1 == 1) || (random2 == 1 && random1 == 2) || (random2 == 2 && random1 == 0))
@@ -193,12 +194,13 @@ function next()
    document.getElementById("score").innerHTML=cnt;
    random1=Math.floor(Math.random()*3)
    random2=Math.floor(Math.random()*3)
-   document.getElementById("jyanken_order").src=icon_arr[random1]
+   document.getElementById("order_icon").src=icon_arr[random1]
    document.getElementById("order_comment").innerHTML=comment_arr[random2]
 
    color();
 
 }
+
 
 
 function NGnext()
@@ -207,7 +209,7 @@ function NGnext()
    document.getElementById("score").innerHTML=cnt;
    random1=Math.floor(Math.random()*3)
    random2=Math.floor(Math.random()*3)
-   document.getElementById("jyanken_order").src=icon_arr[random1]
+   document.getElementById("order_icon").src=icon_arr[random1]
    document.getElementById("order_comment").innerHTML=comment_arr[random2]
 
   color();

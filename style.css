@@ -71,26 +71,22 @@ margin-right: auto;
 width:200px;
 }
 
-#janken_order_container
-{
-width:100px;
-height:100px;
-}
 
-.order
+
+#order_icon
 {
 display:block;
 width:100px;
 margin:0px 0px;
-text-align: center;
+text-align: left;
 }
 
 #order_comment
 {
 display:block;
-width:150px;
+width:200px;
 margin:10px 0px;
-text-align:left;
+text-align: left;
 }
 
 .order_all
