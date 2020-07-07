@@ -2,7 +2,7 @@
 
 body, div, p,img
    {
-    font: 400 20px/22px Roboto,sans-serif;
+    font: 20px 'Lucida Grande', Helvetica, Arial, sans-serif;
     user-select: none; /* CSS3 */
     -moz-user-select: none; /* Firefox */
     -webkit-user-select: none; /* Safari、Chromeなど */
@@ -57,7 +57,7 @@ text-align: center;
 {
 display:block;
 width:100px;
-margin: 25px 0px;
+margin: 20px 0px;
 margin-left: auto;
 margin-right: auto;
 pointer-events: none;
@@ -95,6 +95,16 @@ text-align: left;
 margin:0px 0px;
 width:200px;
 height:100px;
+}
+
+#title
+{
+font: 16px 'Lucida Grande', Helvetica, Arial, sans-serif;
+display:block;
+width:200px;
+margin-left: auto;
+margin-right: auto;
+text-align: center;
 }
 
 

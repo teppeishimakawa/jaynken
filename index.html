@@ -15,13 +15,14 @@
 
 
 <body oncontextmenu='return false;' oncopy='return false;'>
+<div id="title">後出しジャンケン10回勝負</div>
 <!--user-select:none,oncontextmenu='return false;' oncopy='return false;'重要！ボタン文字が選択状態になってしまう。-->
 <div class="order_all">
 <img class="order" id="order_icon" style="visibility: hidden;">
 <div id="order_comment"></div>
 </div>
 
-<div id="time"  style='position: fixed;top: 5%; right:0%;  width:200px;height:70px;text-align:center;font-size: 25px;color: black'></div>
+<div id="time"  style='position: fixed;top: 10%; right:0%;  width:200px;height:70px;text-align:center;font-size: 25px;color: black'></div>
 <div id="score" style='position: fixed;top: 20%;right:10%; width:200px;height:70px;text-align: right;font-size: 25px;color: black'></div>
 
 
@@ -78,8 +79,9 @@ document.getElementById("order_icon").src=icon_arr[random1];
 　　　　　function showPassage()
 　　　　　{
    　　　 PassSec++;
-   　　　 msg = 29 - (Math.floor(PassSec/100)) + ":" +  ( '00' + (100 - PassSec%100)).slice( -2 );   // 表示文作成
-   　　   document.getElementById("time").innerHTML = msg;
+   　　　 //msg = 29 - (Math.floor(PassSec/100)) + ":" +  ( '00' + (100 - PassSec%100)).slice( -2 );   // 表示文作成
+         msg = (Math.floor(PassSec/100)) + ":" +  ( '00' + (PassSec%100)).slice( -2 );
+         document.getElementById("time").innerHTML = msg;
          endChk();
 　　　　　}
 
@@ -98,10 +100,10 @@ document.getElementById("order_icon").src=icon_arr[random1];
 
 function endChk()
 {
- if( (PassSec/100) >= 30)
+ if( (PassSec/100) >= 30 || cnt == 10 )
   {
    stopShowing();
-   document.getElementById("time").innerHTML="0:00";
+   //document.getElementById("time").innerHTML="0:00";
    document.getElementById("score").style.color="red";
    gu.style.pointerEvents="none"
    cho.style.pointerEvents="none"
