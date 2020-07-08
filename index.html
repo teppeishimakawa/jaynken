@@ -15,18 +15,18 @@
 
 
 <body oncontextmenu='return false;' oncopy='return false;'>
-<div id="title">後出しジャンケン10回勝負</div>
+<div id="title">後出しジャンケン 10回勝負</div>
 <!--user-select:none,oncontextmenu='return false;' oncopy='return false;'重要！ボタン文字が選択状態になってしまう。-->
 <div class="order_all">
 <img class="order" id="order_icon" style="visibility: hidden;">
 <div id="order_comment"></div>
 </div>
 
-<div id="time"  style='position: fixed;top: 10%; right:0%;  width:200px;height:70px;text-align:center;font-size: 25px;color: black'></div>
-<div id="score" style='position: fixed;top: 20%;right:10%; width:200px;height:70px;text-align: right;font-size: 25px;color: black'></div>
+<div id="time"  style='position: fixed;top: 10%; right:5%;  width:200px;height:70px;text-align:right;font-size: 15px;color: black'></div>
+<div id="score" style='position: fixed;top: 50%;right:10%; width:200px;height:70px;text-align: right;font-size: 25px;color: black'></div>
 
 
-
+<br>
 <div class="jyanken_all">
   <img class="jyanken red" id="gu" src="./img/gu.png" ontouchstart=""/>
   <img class="jyanken red" id="cho" src="./img/cho.png" ontouchstart=""/>
@@ -62,7 +62,7 @@ var msg;
 
 
 var icon_arr=["./img/gu.png","./img/cho.png","./img/pa.png"]
-var comment_arr=["&nbsp;&nbsp;&nbsp;勝って！","&nbsp;&nbsp;&nbsp;負けて！","引き分けて！"]
+var comment_arr=["&nbsp;&nbsp;&nbsp;勝って！","&nbsp;&nbsp;&nbsp;負けて！","&nbsp;&nbsp;引き分けて！"]
 
 var gu=document.getElementById("gu");
 var cho=document.getElementById("cho");

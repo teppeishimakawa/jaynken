@@ -47,17 +47,18 @@ button[disabled] {
 
 
 .btn_all {
-
-text-align: center;
-
+position: fixed;
+bottom: 1%;
+left: 50%;
+transform: translate(-50%, 0%);
 }
 
 
 .jyanken
 {
 display:block;
-width:100px;
-margin: 20px 0px;
+width:85px;
+margin: 15px 0px;
 margin-left: auto;
 margin-right: auto;
 pointer-events: none;
@@ -66,8 +67,10 @@ z-index: 100;
 
 .jyanken_all
 {
-margin-left: auto;
-margin-right: auto;
+position: fixed;
+bottom: 6%;
+left: 50%;
+transform: translate(-50%, 0%);
 width:200px;
 }
 
@@ -79,21 +82,27 @@ display:block;
 width:100px;
 height:100px;
 margin:0px 0px;
-text-align: left;
+text-align: center;
 }
 
 #order_comment
 {
-display:block;
+position:fixed;
+left: 50%;
+transform: translate(-50%, 0%);
 width:200px;
 margin:10px 0px;
-text-align: left;
+text-align: center;
 }
 
 .order_all
 {
+position: fixed;
+top: 10%;
+left: 50%;
+transform: translate(-50%, 0%);
 margin:0px 0px;
-width:200px;
+width:100px;
 height:100px;
 }
 
