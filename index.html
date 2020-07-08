@@ -22,8 +22,9 @@
 <div id="order_comment"></div>
 </div>
 
-<div id="time"  style='position: fixed;top: 10%; right:5%;  width:200px;height:70px;text-align:right;font-size: 15px;color: black'></div>
-<div id="score" style='position: fixed;top: 50%;right:10%; width:200px;height:70px;text-align: right;font-size: 25px;color: black'></div>
+<progress id="myProgress" value="0" max="100">0%</progress>
+<div id="time" ></div>
+<div id="score"></div>
 
 
 <br>
@@ -74,6 +75,21 @@ var random2=Math.floor(Math.random()*3)
 color();
 
 document.getElementById("order_icon").src=icon_arr[random1];
+
+
+
+
+
+  // プログレスバーの進捗値
+  var val;
+  // 一定間隔で処理を行うintervalのIDを保持
+  var intervalID;
+
+
+
+
+
+
 　　　　　
 
 　　　　　function showPassage()
@@ -134,6 +150,10 @@ document.getElementById("stt").addEventListener("click", () =>
     {
 
     }
+
+    val = 0;
+    // 50msおきにプログレスバーを更新する
+    intervalID = setInterval("updateProgress()", 300);
 });
 
 
@@ -216,6 +236,29 @@ function NGnext()
 
   color();
 }
+
+
+
+
+
+
+
+  // プログレスバーを更新する
+  function updateProgress()
+  {
+    // プログレスバーの進捗値を更新し、プログレスバーに反映させる
+    val += 1;
+    document.getElementById("myProgress").value = val;
+    document.getElementById("myProgress").innerText = val + "%";
+    console.log("progress:", val, "%");
+
+    // 最大値まで達したら終了
+    if (val == 100)
+    {
+      clearInterval(intervalID);
+    }
+  }
+
 </script>
 
 
