@@ -18,8 +18,8 @@
 <div id="title">後出しジャンケン 10回勝負</div>
 <!--user-select:none,oncontextmenu='return false;' oncopy='return false;'重要！ボタン文字が選択状態になってしまう。-->
 <div class="order_all">
-<img class="order" id="order_icon" style="visibility: hidden;">
-<div id="order_comment"></div>
+ <img class="order" id="order_icon" style="visibility: hidden;">
+ <div id="order_comment"></div>
 </div>
 
 <progress id="myProgress" value="0" max="100">0%</progress>
@@ -34,7 +34,6 @@
   <img class="jyanken red" id="pa" src="./img/pa.png"/>
 </div>
 
-
 <div class="btn_all">
     <button id="stt">start</button>
     <button id="reload">reload</button>
@@ -42,12 +41,12 @@
 
 
 
-
 <script type="module">
 
 
-import {cnt, PassSec, PassageID,icon_arr,comment_arr,gu,cho,pa,random1,random2} from "./index.js";
-import {showPassage,startShowing,stopShowing,endChk,next,NGnext,color,click,result} from "./index.js";
+import {icon_arr,gu,cho,pa,random1} from "./index.js";
+import {color,click,result} from "./index.js";
+
 
 gu.addEventListener('touchstart',function() {}, {passive: true});
 cho.addEventListener('touchstart',function() {}, {passive: true});

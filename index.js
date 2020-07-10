@@ -37,35 +37,11 @@ var intervalID;
 
 
 
-export {cnt, PassSec, PassageID,icon_arr,comment_arr,gu,cho,pa,random1,random2,val,intervalID};
+export {icon_arr,gu,cho,pa,random1};
+　　
 
 
-export function click()
-{
-  var flg=0;
-  if(flg == 0)
-    {
-      startShowing();
-      document.getElementById("stt").disabled=true;
-      flg=1;
-
-      document.getElementById("order_icon").style.visibility="visible";
-      document.getElementById("order_comment").innerHTML=comment_arr[random2];
-      gu.style.pointerEvents="auto"
-      cho.style.pointerEvents="auto"
-      pa.style.pointerEvents="auto"
-    }else
-    {
-
-    }
-    val = 0;
-    // 300msおきにプログレスバーを更新する
-    intervalID = setInterval(updateProgress, 300);
-}
-　　　　　
-
-
-　　　　  export function showPassage()
+　　　　  function showPassage()
 　　　　　{
          var msg;
    　　　 PassSec++;
@@ -75,13 +51,13 @@ export function click()
          endChk();
 　　　　　}
 
-　　　　  export function startShowing()
+　　　　  function startShowing()
 　　　　　{
    　　　　PassSec = 0;
    　　　　PassageID = setInterval(showPassage,10);
 　　　　　}
 
-         export function stopShowing()
+         function stopShowing()
          {
          clearInterval(PassageID);
          }
@@ -89,7 +65,7 @@ export function click()
 
 
 
-export function endChk()
+function endChk()
 {
  if( (PassSec/100) >= 30 || cnt == 10 )
   {
@@ -105,7 +81,7 @@ export function endChk()
 
 
 
-export function next()
+function next()
 {
    cnt++
    document.getElementById("score").innerHTML=cnt;
@@ -117,7 +93,7 @@ export function next()
 }
 
 
-export function NGnext()
+function NGnext()
 {
    cnt--
    document.getElementById("score").innerHTML=cnt;
@@ -127,6 +103,26 @@ export function NGnext()
    document.getElementById("order_comment").innerHTML=comment_arr[random2]
    color();
 }
+
+
+  // プログレスバーを更新する
+ function updateProgress()
+  {
+    // プログレスバーの進捗値を更新し、プログレスバーに反映させる
+    val += 1;
+    document.getElementById("myProgress").value = val;
+    document.getElementById("myProgress").innerText = val + "%";
+    //console.log("progress:", val, "%");
+
+    // 最大値まで達したら終了
+    if (val == 100)
+    {
+      clearInterval(intervalID);
+    }
+  }
+
+
+
 
 
 export function color()
@@ -161,26 +157,33 @@ export function result(a,b,c)
 }
 
 
-
-
-
-
-
-  // プログレスバーを更新する
- export function updateProgress()
-  {
-    // プログレスバーの進捗値を更新し、プログレスバーに反映させる
-    val += 1;
-    document.getElementById("myProgress").value = val;
-    document.getElementById("myProgress").innerText = val + "%";
-    //console.log("progress:", val, "%");
-
-    // 最大値まで達したら終了
-    if (val == 100)
+export function click()
+{
+  var flg=0;
+  if(flg == 0)
     {
-      clearInterval(intervalID);
+      startShowing();
+      document.getElementById("stt").disabled=true;
+      flg=1;
+
+      document.getElementById("order_icon").style.visibility="visible";
+      document.getElementById("order_comment").innerHTML=comment_arr[random2];
+      gu.style.pointerEvents="auto"
+      cho.style.pointerEvents="auto"
+      pa.style.pointerEvents="auto"
+    }else
+    {
+
     }
-  }
+    val = 0;
+    // 300msおきにプログレスバーを更新する
+    intervalID = setInterval(updateProgress, 300);
+}
+　　　
+
+
+
+
 
 
 
