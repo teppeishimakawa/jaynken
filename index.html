@@ -29,9 +29,9 @@
 
 <br>
 <div class="jyanken_all">
-  <img class="jyanken red" id="gu" src="./img/gu.png" ontouchstart=""/>
-  <img class="jyanken red" id="cho" src="./img/cho.png" ontouchstart=""/>
-  <img class="jyanken red" id="pa" src="./img/pa.png" ontouchstart=""/>
+  <img class="jyanken red" id="gu" src="./img/gu.png"/>
+  <img class="jyanken red" id="cho" src="./img/cho.png"/>
+  <img class="jyanken red" id="pa" src="./img/pa.png"/>
 </div>
 
 
@@ -41,226 +41,44 @@
 </div>
 
 
-<script>
-
-/*
-function isMobile()
-{
-  const isAndroid = /Android/i.test(navigator.userAgent);
-  const isiOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-  return isAndroid || isiOS;
-}
-
-const mobile = isMobile();
-*/
 
 
-var flg=0;
-var cnt=0;
-var PassSec;
-var PassageID;
-var msg;
+<script type="module">
 
 
-var icon_arr=["./img/gu.png","./img/cho.png","./img/pa.png"]
-var comment_arr=["&nbsp;&nbsp;&nbsp;勝って！","&nbsp;&nbsp;&nbsp;負けて！","&nbsp;&nbsp;引き分けて！"]
+import {cnt, PassSec, PassageID,icon_arr,comment_arr,gu,cho,pa,random1,random2} from "./index.js";
+import {showPassage,startShowing,stopShowing,endChk,next,NGnext,color,click,result} from "./index.js";
 
-var gu=document.getElementById("gu");
-var cho=document.getElementById("cho");
-var pa=document.getElementById("pa");
-
-var random1=Math.floor(Math.random()*3)
-var random2=Math.floor(Math.random()*3)
+gu.addEventListener('touchstart',function() {}, {passive: true});
+cho.addEventListener('touchstart',function() {}, {passive: true});
+pa.addEventListener('touchstart', function() {}, {passive: true});
 
 color();
 
 document.getElementById("order_icon").src=icon_arr[random1];
 
-
-
-
-
-  // プログレスバーの進捗値
-  var val;
-  // 一定間隔で処理を行うintervalのIDを保持
-  var intervalID;
-
-
-
-
-
-
-　　　　　
-
-　　　　　function showPassage()
-　　　　　{
-   　　　 PassSec++;
-   　　　 //msg = 29 - (Math.floor(PassSec/100)) + ":" +  ( '00' + (100 - PassSec%100)).slice( -2 );   // 表示文作成
-         msg = (Math.floor(PassSec/100)) + ":" +  ( '00' + (PassSec%100)).slice( -2 );
-         document.getElementById("time").innerHTML = msg;
-         endChk();
-　　　　　}
-
-　　　　　function startShowing()
-　　　　　{
-   　　　　PassSec = 0;
-   　　　　PassageID = setInterval(showPassage,10);
-　　　　　}
-
-        function stopShowing()
-        {
-        clearInterval(PassageID);
-        }
-
-
-
-function endChk()
-{
- if( (PassSec/100) >= 30 || cnt == 10 )
-  {
-   stopShowing();
-   //document.getElementById("time").innerHTML="0:00";
-   document.getElementById("score").style.color="red";
-   gu.style.pointerEvents="none"
-   cho.style.pointerEvents="none"
-   pa.style.pointerEvents="none"
-  }
-}
-
-
-
-
-
-
-document.getElementById("stt").addEventListener("click", () =>
-{
-  if(flg == 0)
-    {
-      startShowing();
-      document.getElementById("stt").disabled=true;
-      flg=1;
-
-      document.getElementById("order_icon").style.visibility="visible";
-      document.getElementById("order_comment").innerHTML=comment_arr[random2];
-      gu.style.pointerEvents="auto"
-      cho.style.pointerEvents="auto"
-      pa.style.pointerEvents="auto"
-
-    }else
-    {
-
-    }
-
-    val = 0;
-    // 50msおきにプログレスバーを更新する
-    intervalID = setInterval("updateProgress()", 300);
-});
-
-
-
+document.getElementById("stt").addEventListener("click", click);
 document.getElementById("reload").onclick=function(){location.reload()}
-
 
 //random1 0:gu,1:cho,2:pa
 //random2 0:勝ち,1:負け,2:引き分け
+//gu出し：勝って cho, 負けて pa, 引き分けて gu  1 2 0
+//cho出し：勝って pa, 負けて gu, 引き分けて cho  2 0 1
+//pa出し：勝って gu, 負けて cho, 引き分けて pa  0 1 2
 
 //gu
 gu.onclick=function()
-{//勝って cho, 負けて pa, 引き分けて gu
-  if((random2 == 0 && random1 == 1) || (random2 == 1 && random1 == 2) || (random2 == 2 && random1 == 0))
-  {
-   next();
-  }else{NGnext();}
-}
+{result(1,2,0)}
 
 //cho
 cho.onclick=function()
-{//勝って pa, 負けて gu, 引き分けて cho
-  if((random2 == 0 && random1 == 2) || (random2 == 1 && random1 == 0) || (random2 == 2 && random1 == 1))
-  {
-   next();
-  }else{NGnext();}
-}
+{result(2,0,1)}
 
 //pa
 pa.onclick=function()
-{//勝って gu, 負けて gu, 引き分けて pa
-  if((random2 == 0 && random1 == 0) || (random2 == 1 && random1 == 1) || (random2 == 2 && random1 == 2))
-  {
-   next();
-  }else{NGnext();}
-}
-
-
-function color()
-{
-  if((random2 == 0 && random1 == 1) || (random2 == 1 && random1 == 2) || (random2 == 2 && random1 == 0))
-  {
-   gu.className = 'jyanken green';cho.className = 'jyanken red';pa.className = 'jyanken red';
-  }
-
-  if((random2 == 0 && random1 == 2) || (random2 == 1 && random1 == 0) || (random2 == 2 && random1 == 1))
-  {
-   cho.className = 'jyanken green';gu.className = 'jyanken red';pa.className = 'jyanken red';
-  }
-
-   if((random2 == 0 && random1 == 0) || (random2 == 1 && random1 == 1) || (random2 == 2 && random1 == 2))
-  {
-   pa.className = 'jyanken green';gu.className = 'jyanken red';cho.className = 'jyanken red';
-  }
-}
-
-
-function next()
-{
-   cnt++
-   document.getElementById("score").innerHTML=cnt;
-   random1=Math.floor(Math.random()*3)
-   random2=Math.floor(Math.random()*3)
-   document.getElementById("order_icon").src=icon_arr[random1]
-   document.getElementById("order_comment").innerHTML=comment_arr[random2]
-
-   color();
-
-}
-
-
-function NGnext()
-{
-   cnt--
-   document.getElementById("score").innerHTML=cnt;
-   random1=Math.floor(Math.random()*3)
-   random2=Math.floor(Math.random()*3)
-   document.getElementById("order_icon").src=icon_arr[random1]
-   document.getElementById("order_comment").innerHTML=comment_arr[random2]
-
-  color();
-}
-
-
-
-
-
-
-
-  // プログレスバーを更新する
-  function updateProgress()
-  {
-    // プログレスバーの進捗値を更新し、プログレスバーに反映させる
-    val += 1;
-    document.getElementById("myProgress").value = val;
-    document.getElementById("myProgress").innerText = val + "%";
-    console.log("progress:", val, "%");
-
-    // 最大値まで達したら終了
-    if (val == 100)
-    {
-      clearInterval(intervalID);
-    }
-  }
+{result(0,1,2)}
 
 </script>
-
 
 
 </body>
